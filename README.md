@@ -27,7 +27,11 @@ Key aspects:
 
 * Inputs are produced via Python generators.
 * Additional helper modules or fuzzing components can be added to the `fuzzer/` directory.
-* The design allows combining different fuzzing strategies (mutation, generation, hybrid approaches, seed-based logic, etc.).
+* The implementation combines two main fuzzing strategies:
+
+  * **Grammar-based fuzzing** to generate syntactically valid C programs using a high-level language structure.
+  * **Mutation-based fuzzing** to evolve and refine inputs by modifying previously successful or seed-generated programs.
+* These strategies operate together to balance structured exploration with broader random variation.
 * No external C-specific generators such as Csmith are used.
 
 ## Fuzzing Modes
@@ -159,5 +163,4 @@ This verifies reproducibility and allows further input minimization.
 * Experimentation with multiple fuzzing approaches is encouraged.
 
 ```
-
 ```
