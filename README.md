@@ -78,6 +78,7 @@ You may add:
 
 * Python packages to `requirements.txt`
 * Debian packages to `apt-packages.txt`
+* The Fuzzing Book Library
 
 No binary files are committed to the repository.
 
