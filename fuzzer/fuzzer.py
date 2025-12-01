@@ -8,7 +8,6 @@ from fuzzingbook.ProbabilisticGrammarFuzzer import ProbabilisticGrammarFuzzer
 from fuzzingbook.Grammars import opts
 from fuzzingbook.Grammars import is_valid_grammar
 from fuzzingbook.MutationFuzzer import FunctionRunner
-from fuzzingbook.GreyboxFuzzer import AdvancedMutationFuzzer , Mutator , PowerSchedule   , GreyboxFuzzer 
 
 
 C_GRAMMAR = {
@@ -442,8 +441,6 @@ C_GRAMMAR = {
 
 Seeds = project_evaluation.get_seeds()
 Fuzzer = None
-mut = Mutator()
-ps = PowerSchedule()
  
 def yield_next_input() -> Generator[bytes, None, None]:
     # Implement your fuzzer here
@@ -453,9 +450,7 @@ def yield_next_input() -> Generator[bytes, None, None]:
     PROB_GRAMMAR_FUZZER = ProbabilisticGrammarFuzzer(grammar=C_GRAMMAR, start_symbol="<start>", max_nonterminals=100)
     MUTATION_COVERAGE_FUZZER = MutationFuzzer(Seeds)
     if Seeds  : 
-         #FUZZ = MUTATION_COVERAGE_FUZZER
-         # FUZZ = AdvancedMutationFuzzer(Seeds, mut, ps)
-          FUZZ = GreyboxFuzzer(Seeds, mut, ps)
+          FUZZ = MUTATION_COVERAGE_FUZZER
     else:
           FUZZ = PROB_GRAMMAR_FUZZER
 
